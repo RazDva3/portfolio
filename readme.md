@@ -5,7 +5,7 @@
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone https://github.com/RazDva3/portfolio
+$ git clone git@github.com:RazDva3/portfolio.git
 $ cd portfolio
 $ yarn install
 ```
