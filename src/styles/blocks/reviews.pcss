@@ -1,0 +1,71 @@
+.reviews {
+  padding-top: 140px;
+}
+
+.reviews__container {
+  position: relative;
+  
+  @include phones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.reviews__desc-list {
+  display: flex;
+  padding-left: 120px;
+
+  @include phones {
+    padding-left: 0;
+  }
+}
+
+.reviews__section-title {
+  display: flex;
+}
+
+.reviews__desc-item:last-child {
+  margin: 0;
+}
+
+.reviews__desc-item {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-width: 410px;
+  display: none;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 70px;
+    position: absolute;
+    height: 60px;
+    background: svg-load('quote.svg', fill=rgba(70, 77, 98, 0.3)) center center / contain no-repeat;
+    top: 0;
+    left: -75px;
+
+    @include tablets {
+      display: none;
+    }
+  }
+
+  &.active {
+    display: flex;
+  }
+}
+
+.reviews__desc-item p {
+  margin-bottom: 30px;
+  color: rgba(70, 77, 98, 0.5);
+
+  @include phones {
+  margin-top: 30px;
+  }
+}
+
+.reviews__author--desc--wrapper {
+  display: flex;
+  flex-direction: column;
+}

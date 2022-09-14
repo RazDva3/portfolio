@@ -1,0 +1,21 @@
+.bar {
+  display: block;
+  width: 24px;
+  height: 4px;
+  margin: 3px auto;
+  background-color: $text-color;
+  z-index: 101;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.burger-menu {
+  width: 50px;
+  cursor: pointer;
+  display: none;
+
+  @include tablets {
+    display: flex;
+    flex-direction: column;
+  }
+}

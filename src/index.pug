@@ -1,0 +1,192 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Portfolio | main page
+  body
+    .wrapper
+      .maincontent
+        .welcome-section
+          section.parallax
+            - for (var i = 1; i <= 7; i++)
+              .parallax__layer
+                picture
+                  source(srcset=require(`images/parallax/${i}_2560.${i === 1 ? 'jpg' : 'png'}`) media="(min-width: 1920px)").parallax__image
+                  img(srcset=require(`images/parallax/${i}.${i === 1 ? 'jpg' : 'png'}`)).parallax__image
+          section.fullscreen-section.hero
+            .container.hero__container
+              header.header
+                .header__logo
+                  a.logo(href="") ВА
+                .header__menu 
+                  nav.menu
+                    ul.menu__list
+                      - var menuLinks = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
+                      each item in menuLinks 
+                        li.menu__item
+                          a(href="#").menu__link #{item}
+                .header__buttons
+                  ul.socials
+                    - var socials = ['insta', 'vk', 'github'];
+                    each item in socials
+                      li.socials__item
+                        a(href="#").socials__link
+                          +icon(item, 'socials__icon')
+                .burger-menu
+                  span.bar
+                  span.bar
+                  span.bar
+
+              .hero__content
+                .userinfo
+                  .userinfo__title Личный сайт #[span.userinfo__occ веб разработчика]
+                  .userinfo__name Владимир Астаханов
+              .hero__downbutton
+                .scroll-down
+                  a(href="").scroll-down__btn Скролл
+                  
+          section.about
+            .container
+              .about__columns
+                .about__user
+                  .user
+                    .user__avatar
+                      .user__avatar-wrapper
+                        +image('content/user.webp', 'user__avatar-pic')
+                    .user__about
+                      - 
+                        var userinfo = [
+                          ['Проживаю:', "Новосибирск"],
+                          ['Возраст:', "27 лет"],
+                          ['Родился:', "1 января 1991"],
+                        ];
+                      table.user__table
+                        each item in userinfo
+                          tr
+                            td.user__table-title #{item[0]}
+                            td.user__table-content #{item[1]}
+                .about__user-text
+                  .about__main-text-content
+                    .about__desc Привет, меня зовут
+                    .about__title Владимир Астаханов
+                    .about__text-info
+                      p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                  .about__ps
+                    | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+        .triangles.triangles_top
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+            polygon(points="0,0 0,100 1000,100")
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+            polygon(points="0,100 1000,100 1000,0")
+
+        .middle-section
+          section.values
+            .container.values__container
+              .values__wrapper
+                .values__title
+                  .values__title-container
+                    .values__title-text Чем я могу быть полезен вам
+                    .values__content
+                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                .values__widget
+                  #skills-component
+          section.works
+            .container.works__container
+              .section-title.works__section-title Мои работы
+              .works__content
+                #slider-component
+
+        .triangles.triangles_bottom
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+            polygon(points="0,0 1000,0 1000,100")
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+            polygon(points="0,0 0,100 1000,0")
+
+        .bottom-section
+        
+          section.bottom-parallax
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-1.jpg', 'bottom-parallax__image')
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-2.png', 'bottom-parallax__image')
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-3.png', 'bottom-parallax__image')
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-4.png', 'bottom-parallax__image')
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-5.png','bottom-parallax__image')
+            .bottom-parallax__layer
+              +image('parallax/bottom-parallax-6.png', 'bottom-parallax__image')
+
+          section.reviews
+            .container.reviews__container
+              .section-title.reviews__section-title Что обо мне говорят
+              .reviews__slider
+                #reviews-component
+
+          section.contacts
+            .container.contacts__container
+              .contacts__about
+                .contacts__form
+                  .form
+                    .section-title.contacts__form-title Связаться со мной
+                    form.form__elem
+                      .form__row
+                        - 
+                          var fields = [
+                            ['user', 'Введите ваше имя', 'Ковальчук Дмитрий'],
+                            ['envelope', 'Введите ваш email', 'loftschool@study.com'],
+                          ]
+                        each item in fields
+                          label.form-block(data-title=item[1])
+                            .form-block__container
+                              +icon(`${item[0]}`, 'form-block__icon') 
+                              .form-block__field
+                                input(type="text" placeholder=item[2]).form-block__input
+                      .form__row.form__row--extra-margin
+                        label.form-block(data-title="Сообщение к письму")
+                          .form-block__container.form-block__container_align_top
+                            +icon('message', 'form-block__icon') 
+                            .form-block__field
+                              textarea(
+                                placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
+                              ).form-block__input
+                      .from__row
+                        input(type="submit" value="отправить").gradient-btn.form__submit
+
+      footer.footer
+        .container.footer__container
+          .footer__copyright
+            .footer__copyright-col
+              .footer__copyright-year &copy; 2022
+            .footer__copyright-userinfo
+              .footer__copyright-name Владимир Астаханов
+              .footer__data-text Личный сайт веб - разработчика
+          .footer__data
+            nav.menu.menu--color-white.footer__data-menu
+              ul.menu__list
+                each item in menuLinks 
+                  li.menu__item
+                    a(href="#").menu__link #{item}
+            .footer__data-content
+              .footer__data-col
+                .footer__data-text
+                  p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                .footer__data-socials
+                  ul.socials.socials--round-borders
+                    each item in socials
+                      li.socials__item
+                        a(href="#").socials__link
+                          +icon(item, 'socials__icon')
+              .footer__data-col
+                .text-quote
+                  .text-quote__text
+                    p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
+                  .text-quote__author Martin Golding
+                  
+    include ./templates/entry.pug

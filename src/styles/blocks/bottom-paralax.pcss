@@ -1,0 +1,77 @@
+.bottom-parallax {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  @include tablets {
+    display: none;
+  }
+}
+
+.bottom-parallax__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  will-change: transform;
+
+  &:nth-child(1) {
+    display: block;
+    z-index: -1;
+    .bottom-parallax__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    @include tablets {
+      display: none;
+    }
+  }
+  &:nth-child(2) {
+    display: block;
+    top: 400px;
+    left: 63%;
+    @include tablets {
+      display: none;
+    }
+  }
+  &:nth-child(3) {
+    display: block;
+    left: 0;
+    top: 53%;
+    z-index: -1;
+    @include tablets {
+      display: none;
+    }
+  }
+  &:nth-child(4) {
+    display: block;
+    left: 0;
+    top: 54%;
+    z-index: -1;
+    @include tablets {
+      display: none;
+    }
+  }
+  &:nth-child(5) {
+    display: block;
+    left: 0;
+    top: 45%;
+    z-index: -1;
+    @include tablets {
+      display: none;
+    }
+  }
+  &:nth-child(6) {
+    display: block;
+    top: 71%;
+    z-index: -1;
+    @include tablets {
+      display: none;
+    }
+  }
+}

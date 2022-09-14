@@ -1,0 +1,53 @@
+.reviews-slider__buttons {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 30%;
+
+  @include tablets {
+    left: 50%;
+  }
+
+  @include phones {
+    top: 20%;
+    left: 35%;
+  }
+}
+
+.reviews-slider__btn:last-child {
+  margin: 0;
+}
+
+.reviews-slider__btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid $text-color;
+  display: block;
+  position: relative;
+  margin-right: 30px;
+
+  &:before {
+    content: "";
+    background: svg-load('arrow-down.svg', fill=$text-color, width=100%, height=100%) center center no-repeat;
+    display: block;
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-180deg);
+    transition: opacity .3s, margin-top .3s;
+    opacity: .3;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &_prev {
+    &:before {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+}

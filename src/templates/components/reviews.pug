@@ -1,0 +1,36 @@
+script(type="text/x-template")#reviews-container
+  .reviews-slider
+    contentText(
+      :reviews="reviews"
+      :currentReview="currentReview"
+      @slide="handleSlide"
+    )
+
+script(type="text/x-template")#reviews-content
+  .reviews-slider__desc
+    ul.reviews__desc-list
+      btns(
+        @slide="direction => $emit('slide', direction)"
+      )
+      li.reviews__desc-item(
+        v-for="review in reviews"
+        :class="{active: review.id === currentReview.id}"
+        )
+        p {{currentReview.text}}
+        author(
+          :currentReview="currentReview"
+        )
+
+script(type="text/x-template")#reviews-btns
+  .reviews-slider__buttons 
+    a(@click.prevent="$emit('slide', 'prev')").reviews-slider__btn.reviews-slider__btn_next
+    a(@click.prevent="$emit('slide', 'next')").reviews-slider__btn.reviews-slider__btn_prev
+
+script(type="text/x-template")#reviews-author
+  .reviews-slider__author
+    .reviews__author--pic
+      .reviews__author--pic-wrapper
+        img(:src="currentReview.authorPic").author--pic
+    .reviews__author--desc--wrapper
+      .reviews__author--name {{currentReview.authorName}}
+      .reviews__author--pos {{currentReview.authorOcc}}
